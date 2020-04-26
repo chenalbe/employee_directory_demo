@@ -1,0 +1,47 @@
+{
+    employees:
+    [
+    {
+        id: 1,
+        firstName: 'Albert',
+        lastName:'Chen',
+        title:'CEO',
+        level:'8',
+      },
+      {
+          id: 2,
+          firstName: 'Lucy',
+          lastName:'Kao',
+          title:'President',
+          level:'6',
+      },
+      {
+          id: 3,
+          firstName: 'Mark',
+          lastName:'Kawasara',
+          title:'Director',
+          level:'4',
+      },
+      {
+          id: 4,
+          firstName: 'Peter',
+          lastName:'Smith',
+          title:'Program Manager',
+          level:'3',
+      },
+      {
+          id: 5,
+          firstName: 'Alan',
+          lastName:'Tucker',
+          title:'Program Manager',
+          level:'3',
+      },
+      {
+          id: 6,
+          firstName: 'Tom',
+          lastName:'Styer',
+          title:'Software Developer',
+          level:'2',
+      }
+    ]
+}
