@@ -18,7 +18,9 @@ class Table extends Component {
       super(props) 
       this.state = { 
         results: [],
-		search: '',
+        search: '',
+        filterResult:[],
+        searched:false,
          employees: [
             {
                 id: 1,
@@ -122,6 +124,39 @@ class Table extends Component {
     })
  }
 
+ searchSpace=(event)=>{
+     let keyword = event.target.value;
+    console.log(keyword);
+    this.setState({search:keyword});
+  };
+  mySubmitHandler = (event) => {
+    event.preventDefault();
+    console.log(this.state.search);
+    let keyword = this.state.search;
+    let data = this.state.employees;
+    const filtered = data.filter(entry => Object.values(entry).some(val => typeof val === "string" && val.includes(keyword)));
+    console.log(filtered);
+    this.setState({filterResult:filtered, searched: true});
+  }
+  renderSearchResult(){
+    if (this.state.searched === true){
+        return this.state.filterResult.map((employee, index) => {
+            const { id, firstName, lastName, title, level } = employee //destructuring
+            return (
+               <tr key={id}>
+                  <td>{id}</td>
+                  <td>{firstName}</td>
+                  <td>{lastName}</td>
+                  <td>{title}</td>
+                  <td>{level}</td>
+               </tr>
+            )
+         })
+    } else {
+        return;
+    }
+  }
+ 
  render() {
     return (
        <div>
@@ -130,6 +165,8 @@ class Table extends Component {
              <tbody className="thead-dark">
                 {this.renderTableHeader()}
                 {this.renderTableData()}
+                <input type="text" onChange={this.searchSpace} placeholder="search for employees" /><button onClick={this.mySubmitHandler}>Submit</button>
+                {this.renderSearchResult()}
              </tbody>
           </table>
        </div>
